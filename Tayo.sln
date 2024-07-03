@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Example\Example.vcxproj", "{59BA16EF-DD97-4A06-BFD9-D050416D34D9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tayo", "Tayo\Tayo.vcxproj", "{0D07D362-8CFD-42FE-AC81-1289A8B55693}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D07D362-8CFD-42FE-AC81-1289A8B55693}.Debug|x64.ActiveCfg = Debug|x64
+		{0D07D362-8CFD-42FE-AC81-1289A8B55693}.Debug|x64.Build.0 = Debug|x64
+		{0D07D362-8CFD-42FE-AC81-1289A8B55693}.Release|x64.ActiveCfg = Release|x64
+		{0D07D362-8CFD-42FE-AC81-1289A8B55693}.Release|x64.Build.0 = Release|x64
+		{59BA16EF-DD97-4A06-BFD9-D050416D34D9}.Debug|x64.ActiveCfg = Debug|x64
+		{59BA16EF-DD97-4A06-BFD9-D050416D34D9}.Debug|x64.Build.0 = Debug|x64
+		{59BA16EF-DD97-4A06-BFD9-D050416D34D9}.Release|x64.ActiveCfg = Release|x64
+		{59BA16EF-DD97-4A06-BFD9-D050416D34D9}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86ABE801-CE0D-475D-8F40-88913894755C}
+	EndGlobalSection
+EndGlobal
