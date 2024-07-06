@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Core.h"
+#include "Events/Event.h"
 
 namespace Tayo {
+
 	class TAYO_API Application
 	{
 	public:

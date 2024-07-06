@@ -9,3 +9,5 @@
 #else
 	#error Tayo only supportWindow!
 #endif // TY_PLATFORM_WINDOW
+
+#define BIT(x) (1<<x)
