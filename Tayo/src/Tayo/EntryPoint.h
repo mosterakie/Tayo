@@ -4,7 +4,6 @@
 
 extern Tayo::Application* Tayo::CreateApplication();
 
-using namespace Tayo;
 int main(int argc,char** argv) {
 	Tayo::Log::Init();
 	TY_CORE_WARN("Initialized Log!");

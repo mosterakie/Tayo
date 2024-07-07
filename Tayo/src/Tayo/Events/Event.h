@@ -67,8 +67,6 @@ namespace Tayo {
 		Event& m_Event;
 
 	};
-	std::ostream& operator<<(std::ostream& os, const Event& event) {
-		os << "WindowResizeEvent: " << event.ToString();
-		return os;
-	}
+
+	std::ostream& operator<<(std::ostream& os, const Event& event);
 }

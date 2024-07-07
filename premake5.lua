@@ -53,7 +53,8 @@ project "Tayo"
 		defines
 		{
 			"TY_PLATFORM_WINDOWS",
-			"TY_BUILD_DLL"
+			"TY_BUILD_DLL",
+			"TY_ENABLE_ASSERTS"
 		}
 		postbuildcommands
 		{
