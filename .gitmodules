@@ -1,3 +1,6 @@
 [submodule "Tayo/vendor/spdlog"]
 	path = Tayo/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Tayo/vendor/GLFW"]
+	path = Tayo/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

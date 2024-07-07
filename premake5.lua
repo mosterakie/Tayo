@@ -10,6 +10,10 @@ workspace "Tayo"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Tayo/vendor/GLFW/include"
+
+include "Tayo/vendor/GLFW"
 
 project "Tayo"
 	location "Tayo"
@@ -22,16 +26,23 @@ project "Tayo"
 	pchheader "typch.h"
 	pchsource "Tayo/src/typch.cpp"
 
-	files{
+	files
+	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
-
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 	
 	filter "system:windows"
@@ -44,7 +55,8 @@ project "Tayo"
 			"TY_PLATFORM_WINDOWS",
 			"TY_BUILD_DLL"
 		}
-		postbuildcommands{
+		postbuildcommands
+		{
 		("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 		
@@ -72,7 +84,8 @@ project "Sandbox"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files{
+	files
+	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 
