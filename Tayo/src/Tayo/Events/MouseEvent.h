@@ -17,7 +17,7 @@ namespace Tayo {
 			ss << "MouseMovedEvent: " << m_MouseX <<"," << m_MouseY;
 			return ss.str();
 		}
-		EVENT_CLASS_TYPE(MouseMovedEvent);
+		EVENT_CLASS_TYPE(MouseMoved);
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_MouseX, m_MouseY;
