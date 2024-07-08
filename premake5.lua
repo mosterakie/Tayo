@@ -12,8 +12,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Tayo/vendor/GLFW/include"
+IncludeDir["Glad"] = "Tayo/vendor/Glad/include"
 
 include "Tayo/vendor/GLFW"
+include "tayo/vendor/Glad"
 
 project "Tayo"
 	location "Tayo"
@@ -36,13 +38,15 @@ project "Tayo"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
-		"opengl32.lib"
+		"opengl32.lib",
+		"Glad"
 	}
 	
 	filter "system:windows"
@@ -54,7 +58,8 @@ project "Tayo"
 		{
 			"TY_PLATFORM_WINDOWS",
 			"TY_BUILD_DLL",
-			"TY_ENABLE_ASSERTS"
+			"TY_ENABLE_ASSERTS",
+			"GLFW_INCLUDE_NONE"
 		}
 		postbuildcommands
 		{
@@ -64,14 +69,17 @@ project "Tayo"
 		
 	filter "configurations:Debug"
 		defines "TY_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TY_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TY_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 
@@ -116,12 +124,15 @@ project "Sandbox"
 		
 	filter "configurations:Debug"
 		defines "TY_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TY_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TY_DIST"
+		buildoptions "/MD"
 		optimize "On"

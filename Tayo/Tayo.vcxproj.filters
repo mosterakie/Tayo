@@ -40,6 +40,12 @@
     <ClInclude Include="src\Tayo\Events\MouseEvent.h">
       <Filter>Tayo\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Tayo\Layer.h">
+      <Filter>Tayo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\LayerStack.h">
+      <Filter>Tayo</Filter>
+    </ClInclude>
     <ClInclude Include="src\Tayo\Log.h">
       <Filter>Tayo</Filter>
     </ClInclude>
@@ -55,8 +61,11 @@
     <ClCompile Include="src\Tayo\Application.cpp">
       <Filter>Tayo</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tayo\Events\Event.cpp">
-      <Filter>Tayo\Events</Filter>
+    <ClCompile Include="src\Tayo\Layer.cpp">
+      <Filter>Tayo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\LayerStack.cpp">
+      <Filter>Tayo</Filter>
     </ClCompile>
     <ClCompile Include="src\Tayo\Log.cpp">
       <Filter>Tayo</Filter>

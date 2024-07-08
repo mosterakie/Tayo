@@ -1,7 +1,7 @@
 #include "typch.h"
 #include "Application.h"
 
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x,this,std::placeholders::_1)
 
@@ -20,7 +20,25 @@ namespace Tayo {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		TY_CORE_TRACE("{0}", e);
+
+		for (auto iter = m_LayerStack.end(); iter != m_LayerStack.begin();)
+		{
+			(*--iter)->OnEvent(e);
+			if (e.Handled)
+			{
+				break;
+			}
+		}
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* overlay)
+	{
+		m_LayerStack.PushOverLay(overlay);
 	}
 
 	void Application::Run() {
@@ -28,6 +46,12 @@ namespace Tayo {
 		{
 			glClearColor(0.2, 0.2, 0.5, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : m_LayerStack)				
+			{
+				layer->OnUpdate();
+			}
+
 			m_Window->OnUpdate();
 		}
 	}
