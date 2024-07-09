@@ -22,6 +22,7 @@ class Sandbox : public Tayo::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Tayo::ImGuiLayer());
 	}
 
 	~Sandbox() {

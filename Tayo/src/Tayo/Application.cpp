@@ -6,8 +6,13 @@
 #define BIND_EVENT_FN(x) std::bind(&Application::x,this,std::placeholders::_1)
 
 namespace Tayo {
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application() 
 	{
+		TY_CORE_ASSERT(!s_Instance,"Application already exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallbcak(BIND_EVENT_FN(OnEvent));
 	}
@@ -34,11 +39,13 @@ namespace Tayo {
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverLay(overlay);
+		overlay->OnAttach();
 	}
 
 	void Application::Run() {

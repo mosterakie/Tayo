@@ -4,3 +4,6 @@
 [submodule "Tayo/vendor/GLFW"]
 	path = Tayo/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Tayo/vendor/imgui"]
+	path = Tayo/vendor/imgui
+	url = https://github.com/JJJJJJJustin/imgui

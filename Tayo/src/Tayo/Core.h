@@ -19,3 +19,5 @@
 	#define TY_ASSERT(x, ...)
 	#define TY_CORE_ASSERT(x, ...)
 #endif
+
+#define TY_BIND_EVENT_FN(fn)std::bind(&fn, this, std::placeholders::_1)

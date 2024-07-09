@@ -6,6 +6,7 @@
 
 #include "Tayo/Layer.h"
 
+#include "Tayo/ImGui/ImGuiLayer.h"
 
 //----Entry Point-------------------
 #include "Tayo/EntryPoint.h"

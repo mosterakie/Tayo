@@ -2,7 +2,7 @@
 
 #include "Platform/Windows/WindowsWindow.h"
 
-#include "Tayo/Events/AppllicationEvent.h"
+#include "Tayo/Events/ApplicationEvent.h"
 #include "Tayo/Events/KeyEvent.h"
 #include "Tayo/Events/MouseEvent.h"
 
@@ -109,6 +109,15 @@ namespace Tayo {
 				MouseMovedEvent event((float)xpos, (float)ypos);
 				data.EventCallback(event);
 			});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				KeyTypedEvent event(keycode);
+				data.EventCallback(event);
+			}
+		);
 	}
 
 
