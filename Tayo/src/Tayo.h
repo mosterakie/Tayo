@@ -8,6 +8,10 @@
 
 #include "Tayo/ImGui/ImGuiLayer.h"
 
+#include "Tayo/Input.h"
+#include "Tayo/KeyCode.h"
+#include "Tayo/MouseCode.h"
+
 //----Entry Point-------------------
 #include "Tayo/EntryPoint.h"
 //----------------------------------

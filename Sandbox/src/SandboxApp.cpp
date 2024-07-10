@@ -9,12 +9,19 @@ public:
 
 	void OnUpdate() override
 	{
-		TY_INFO("ExampleLayer::Update");
+		if (Tayo::Input::IsKeyPressed(TY_KEY_TAB))
+			TY_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(Tayo::Event& event) override
 	{
-		TY_TRACE("{0}", event);
+		if (event.GetEventType() == Tayo::EventType::KeyPressed)
+		{
+			Tayo::KeyPressedEvent& e = (Tayo::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == TY_KEY_TAB)
+				TY_TRACE("Tab key is pressed (event)!");
+			TY_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

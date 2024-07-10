@@ -1,5 +1,6 @@
 workspace "Tayo"
 	architecture "X64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -24,6 +25,7 @@ project "Tayo"
 	location "Tayo"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .."/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .."/%{prj.name}")
@@ -48,44 +50,44 @@ project "Tayo"
 
 	links
 	{
-		"ImGui",
-		"GLFW",
-		"opengl32.lib",
-		"Glad"
 		
+		"GLFW",
+		"Glad",
+		"ImGui",
+		"opengl32.lib"
 	}
 	
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
 		{
 			"TY_PLATFORM_WINDOWS",
 			"TY_BUILD_DLL",
-			"TY_ENABLE_ASSERTS",
 			"GLFW_INCLUDE_NONE"
 		}
+
 		postbuildcommands
 		{
-		("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+		--("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+		("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 		
 		
 	filter "configurations:Debug"
 		defines "TY_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TY_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TY_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 
@@ -95,6 +97,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -119,7 +122,7 @@ project "Sandbox"
 	
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "off"
 		systemversion "latest"
 
 		defines
@@ -130,15 +133,15 @@ project "Sandbox"
 		
 	filter "configurations:Debug"
 		defines "TY_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TY_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TY_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

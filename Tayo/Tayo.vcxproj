@@ -79,12 +79,11 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>typch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>TY_PLATFORM_WINDOWS;TY_BUILD_DLL;TY_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;TY_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TY_PLATFORM_WINDOWS;TY_BUILD_DLL;GLFW_INCLUDE_NONE;TY_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -95,7 +94,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Tayo\Tayo.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Debug-windows-x86_64\Tayo\Tayo.dll ..\bin\Debug-windows-x86_64\Sandbox</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Tayo\Tayo.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Tayo\Tayo.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Tayo\Tayo.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -103,15 +102,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>typch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>TY_PLATFORM_WINDOWS;TY_BUILD_DLL;TY_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;TY_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TY_PLATFORM_WINDOWS;TY_BUILD_DLL;GLFW_INCLUDE_NONE;TY_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -123,7 +121,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Tayo\Tayo.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Release-windows-x86_64\Tayo\Tayo.dll ..\bin\Release-windows-x86_64\Sandbox</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Tayo\Tayo.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Tayo\Tayo.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Tayo\Tayo.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -131,15 +129,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>typch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>TY_PLATFORM_WINDOWS;TY_BUILD_DLL;TY_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;TY_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TY_PLATFORM_WINDOWS;TY_BUILD_DLL;GLFW_INCLUDE_NONE;TY_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -151,11 +148,12 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\Tayo\Tayo.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Dist-windows-x86_64\Tayo\Tayo.dll ..\bin\Dist-windows-x86_64\Sandbox</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Tayo\Tayo.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Tayo\Tayo.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Tayo\Tayo.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\Platform\Windows\WIndowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Tayo.h" />
     <ClInclude Include="src\Tayo\Application.h" />
@@ -166,14 +164,18 @@
     <ClInclude Include="src\Tayo\Events\KeyEvent.h" />
     <ClInclude Include="src\Tayo\Events\MouseEvent.h" />
     <ClInclude Include="src\Tayo\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Tayo\Input.h" />
+    <ClInclude Include="src\Tayo\KeyCode.h" />
     <ClInclude Include="src\Tayo\Layer.h" />
     <ClInclude Include="src\Tayo\LayerStack.h" />
     <ClInclude Include="src\Tayo\Log.h" />
+    <ClInclude Include="src\Tayo\MouseCode.h" />
     <ClInclude Include="src\Tayo\Window.h" />
     <ClInclude Include="src\typch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Tayo\Application.cpp" />
     <ClCompile Include="src\Tayo\ImGui\ImGuiLayer.cpp" />
@@ -185,14 +187,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
-      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
-    </ProjectReference>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
