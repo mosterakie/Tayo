@@ -1,5 +1,7 @@
 #include <Tayo.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Tayo::Layer
 {
 public:
@@ -11,6 +13,13 @@ public:
 	{
 		if (Tayo::Input::IsKeyPressed(TY_KEY_TAB))
 			TY_TRACE("Tab key is pressed (poll)!");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Text");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Tayo::Event& event) override
@@ -29,7 +38,6 @@ class Sandbox : public Tayo::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Tayo::ImGuiLayer());
 	}
 
 	~Sandbox() {

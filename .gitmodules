@@ -7,3 +7,6 @@
 [submodule "Tayo/vendor/imgui"]
 	path = Tayo/vendor/imgui
 	url = https://github.com/JJJJJJJustin/imgui
+[submodule "Tayo/vendor/glm"]
+	path = Tayo/vendor/glm
+	url = https://github.com/g-truc/glm

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Tayo/Window.h"
+#include "Tayo/Renderer/GraphicsContext.h"
 
 #include "GLFW/glfw3.h"
 
@@ -26,6 +27,8 @@ namespace Tayo {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
+
 		struct WindowData
 		{
 			std::string Title;

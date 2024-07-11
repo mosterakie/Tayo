@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Tayo/vendor/GLFW/include"
 IncludeDir["Glad"] = "Tayo/vendor/Glad/include"
 IncludeDir["ImGui"] = "Tayo/vendor/imgui"
+IncludeDir["glm"] = "Tayo/vendor/glm"
 
 
 include "Tayo/vendor/GLFW"
@@ -23,9 +24,10 @@ include "Tayo/vendor/imgui"
 
 project "Tayo"
 	location "Tayo"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .."/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .."/%{prj.name}")
@@ -33,10 +35,17 @@ project "Tayo"
 	pchheader "typch.h"
 	pchsource "Tayo/src/typch.cpp"
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -45,7 +54,8 @@ project "Tayo"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -58,7 +68,6 @@ project "Tayo"
 	}
 	
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -67,28 +76,22 @@ project "Tayo"
 			"TY_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
-
-		postbuildcommands
-		{
-		--("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-		}
 		
 		
 	filter "configurations:Debug"
 		defines "TY_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "TY_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "TY_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 
 
@@ -97,7 +100,8 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -112,7 +116,9 @@ project "Sandbox"
 	includedirs
 	{
 		"Tayo/vendor/spdlog/include",
-		"Tayo/src"
+		"Tayo/src",
+		"Tayo/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -121,8 +127,6 @@ project "Sandbox"
 	}
 	
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "off"
 		systemversion "latest"
 
 		defines
@@ -134,14 +138,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "TY_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "TY_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "TY_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

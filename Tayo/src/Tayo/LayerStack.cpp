@@ -5,7 +5,7 @@
 namespace Tayo {
 	LayerStack::LayerStack()
 	{
-		m_LayerInsert = m_Layers.begin();
+		
 	}
 
 	LayerStack::~LayerStack()
@@ -18,7 +18,9 @@ namespace Tayo {
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
+		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
+		m_LayerInsertIndex++;
+		layer->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
@@ -27,13 +29,15 @@ namespace Tayo {
 		if (iter != m_Layers.end())
 		{
 			m_Layers.erase(iter);
-			m_LayerInsert--;
+			m_LayerInsertIndex--;
+			layer->OnDetach();
 		}
 	}
 
 	void LayerStack::PushOverLay(Layer* overlay)
 	{
 		m_Layers.emplace_back(overlay);
+		overlay->OnAttach();
 	}
 
 	void LayerStack::PopOverLay(Layer* overlay)
@@ -42,6 +46,7 @@ namespace Tayo {
 		if (iter != m_Layers.end())
 		{
 			m_Layers.erase(iter);
+			overlay->OnDetach();
 		}
 	}
 
