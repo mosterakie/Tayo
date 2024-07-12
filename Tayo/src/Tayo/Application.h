@@ -7,6 +7,10 @@
 
 #include "Tayo/ImGui/ImGuiLayer.h"
 
+#include "Tayo/Renderer/Shader.h"
+#include "Tayo/Renderer/Buffer.h"
+#include "Tayo/Renderer/VertexArray.h"
+
 namespace Tayo {
 
 	class TAYO_API Application
@@ -28,7 +32,9 @@ namespace Tayo {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
 	private:
 		static Application* s_Instance;
 	};
