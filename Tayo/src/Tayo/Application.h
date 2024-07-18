@@ -7,13 +7,11 @@
 
 #include "Tayo/ImGui/ImGuiLayer.h"
 
-#include "Tayo/Renderer/Shader.h"
-#include "Tayo/Renderer/Buffer.h"
-#include "Tayo/Renderer/VertexArray.h"
+#include "Tayo/Core/Timestep.h"
 
 namespace Tayo {
 
-	class TAYO_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -28,13 +26,14 @@ namespace Tayo {
 		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& event);
-		std::unique_ptr<Window> m_Window;
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
+
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
+		float m_LastFrameTime = 0.0f;
+
 	private:
 		static Application* s_Instance;
 	};

@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>typch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;TY_PLATFORM_WINDOWS;TY_BUILD_DLL;GLFW_INCLUDE_NONE;TY_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,7 +98,7 @@
       <PrecompiledHeaderFile>typch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;TY_PLATFORM_WINDOWS;TY_BUILD_DLL;GLFW_INCLUDE_NONE;TY_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -123,7 +123,7 @@
       <PrecompiledHeaderFile>typch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;TY_PLATFORM_WINDOWS;TY_BUILD_DLL;GLFW_INCLUDE_NONE;TY_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -144,16 +144,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Tayo\Renderer\Buffer.h" />
-    <ClInclude Include="src\Tayo\Renderer\Renderer.h" />
-    <ClInclude Include="src\Tayo\Renderer\Shader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WIndowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Tayo.h" />
     <ClInclude Include="src\Tayo\Application.h" />
     <ClInclude Include="src\Tayo\Core.h" />
+    <ClInclude Include="src\Tayo\Core\Timestep.h" />
     <ClInclude Include="src\Tayo\EntryPoint.h" />
     <ClInclude Include="src\Tayo\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Tayo\Events\Event.h" />
@@ -166,7 +167,14 @@
     <ClInclude Include="src\Tayo\LayerStack.h" />
     <ClInclude Include="src\Tayo\Log.h" />
     <ClInclude Include="src\Tayo\MouseCode.h" />
+    <ClInclude Include="src\Tayo\Renderer\Buffer.h" />
     <ClInclude Include="src\Tayo\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Tayo\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Tayo\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Tayo\Renderer\Renderer.h" />
+    <ClInclude Include="src\Tayo\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Tayo\Renderer\Shader.h" />
+    <ClInclude Include="src\Tayo\Renderer\Texture.h" />
     <ClInclude Include="src\Tayo\Renderer\VertexArray.h" />
     <ClInclude Include="src\Tayo\Window.h" />
     <ClInclude Include="src\typch.h" />
@@ -586,14 +594,15 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Tayo\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Tayo\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Tayo\Renderer\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Tayo\Application.cpp" />
@@ -602,10 +611,18 @@
     <ClCompile Include="src\Tayo\Layer.cpp" />
     <ClCompile Include="src\Tayo\LayerStack.cpp" />
     <ClCompile Include="src\Tayo\Log.cpp" />
+    <ClCompile Include="src\Tayo\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Tayo\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Tayo\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Tayo\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Tayo\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Tayo\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Tayo\Renderer\Texture.cpp" />
     <ClCompile Include="src\Tayo\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\typch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

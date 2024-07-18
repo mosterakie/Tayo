@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef TY_PLATFORM_WINDOWS
 	#if TY_DYNAMIC_LINK
 		#ifdef TY_BUILD_DLL
@@ -30,3 +32,11 @@
 #endif
 
 #define TY_BIND_EVENT_FN(fn)std::bind(&fn, this, std::placeholders::_1)
+
+namespace Tayo {
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}

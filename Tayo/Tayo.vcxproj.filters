@@ -7,17 +7,26 @@
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Tayo">
       <UniqueIdentifier>{79EB25CF-65B8-80DA-8ED1-6E827AFDB568}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Tayo\Core">
+      <UniqueIdentifier>{71234A58-DDE3-C58E-A61E-0F0C129E0A6B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Tayo\Events">
       <UniqueIdentifier>{3DD58298-A960-F05C-B271-73511E7C4C5D}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Tayo\ImGui">
       <UniqueIdentifier>{6357F961-4F25-ED67-38B9-5D8E2426C9CC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tayo\Renderer">
+      <UniqueIdentifier>{3F2788BB-AB3D-8651-F4B4-1173600A57D9}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -40,8 +49,29 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WIndowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -56,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="src\Tayo\Core.h">
       <Filter>src\Tayo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Core\Timestep.h">
+      <Filter>src\Tayo\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Tayo\EntryPoint.h">
       <Filter>src\Tayo</Filter>
@@ -92,6 +125,33 @@
     </ClInclude>
     <ClInclude Include="src\Tayo\MouseCode.h">
       <Filter>src\Tayo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\Buffer.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\GraphicsContext.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\OrthographicCamera.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\RenderCommand.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\Renderer.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\RendererAPI.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\Shader.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\Texture.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\VertexArray.h">
+      <Filter>src\Tayo\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Tayo\Window.h">
       <Filter>src\Tayo</Filter>
@@ -1347,16 +1407,29 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tayo\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Tayo\Renderer\Shader.h" />
-    <ClInclude Include="src\Tayo\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Tayo\Renderer\Renderer.h" />
-    <ClInclude Include="src\Tayo\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1381,15 +1454,35 @@
     <ClCompile Include="src\Tayo\Log.cpp">
       <Filter>src\Tayo</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\Buffer.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\RenderCommand.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\Renderer.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\RendererAPI.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\Shader.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\Texture.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\VertexArray.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\typch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Tayo\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Tayo\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Tayo\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Tayo\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
