@@ -81,17 +81,38 @@
     <ClInclude Include="src\Tayo.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tayo\Application.h">
-      <Filter>src\Tayo</Filter>
+    <ClInclude Include="src\Tayo\Core\Application.h">
+      <Filter>src\Tayo\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tayo\Core.h">
-      <Filter>src\Tayo</Filter>
+    <ClInclude Include="src\Tayo\Core\Core.h">
+      <Filter>src\Tayo\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Core\EntryPoint.h">
+      <Filter>src\Tayo\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Core\Input.h">
+      <Filter>src\Tayo\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Core\KeyCode.h">
+      <Filter>src\Tayo\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Core\Layer.h">
+      <Filter>src\Tayo\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Core\LayerStack.h">
+      <Filter>src\Tayo\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Core\Log.h">
+      <Filter>src\Tayo\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Core\MouseCode.h">
+      <Filter>src\Tayo\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Tayo\Core\Timestep.h">
       <Filter>src\Tayo\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tayo\EntryPoint.h">
-      <Filter>src\Tayo</Filter>
+    <ClInclude Include="src\Tayo\Core\Window.h">
+      <Filter>src\Tayo\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Tayo\Events\ApplicationEvent.h">
       <Filter>src\Tayo\Events</Filter>
@@ -108,24 +129,6 @@
     <ClInclude Include="src\Tayo\ImGui\ImGuiLayer.h">
       <Filter>src\Tayo\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tayo\Input.h">
-      <Filter>src\Tayo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tayo\KeyCode.h">
-      <Filter>src\Tayo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tayo\Layer.h">
-      <Filter>src\Tayo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tayo\LayerStack.h">
-      <Filter>src\Tayo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tayo\Log.h">
-      <Filter>src\Tayo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tayo\MouseCode.h">
-      <Filter>src\Tayo</Filter>
-    </ClInclude>
     <ClInclude Include="src\Tayo\Renderer\Buffer.h">
       <Filter>src\Tayo\Renderer</Filter>
     </ClInclude>
@@ -133,6 +136,9 @@
       <Filter>src\Tayo\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Tayo\Renderer\OrthographicCamera.h">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\OrthographicCameraController.h">
       <Filter>src\Tayo\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Tayo\Renderer\RenderCommand.h">
@@ -152,9 +158,6 @@
     </ClInclude>
     <ClInclude Include="src\Tayo\Renderer\VertexArray.h">
       <Filter>src\Tayo\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tayo\Window.h">
-      <Filter>src\Tayo</Filter>
     </ClInclude>
     <ClInclude Include="src\typch.h">
       <Filter>src</Filter>
@@ -1410,6 +1413,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Tayo\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1436,8 +1440,17 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tayo\Application.cpp">
-      <Filter>src\Tayo</Filter>
+    <ClCompile Include="src\Tayo\Core\Application.cpp">
+      <Filter>src\Tayo\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Core\Layer.cpp">
+      <Filter>src\Tayo\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Core\LayerStack.cpp">
+      <Filter>src\Tayo\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Core\Log.cpp">
+      <Filter>src\Tayo\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Tayo\ImGui\ImGuiBuild.cpp">
       <Filter>src\Tayo\ImGui</Filter>
@@ -1445,19 +1458,13 @@
     <ClCompile Include="src\Tayo\ImGui\ImGuiLayer.cpp">
       <Filter>src\Tayo\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tayo\Layer.cpp">
-      <Filter>src\Tayo</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tayo\LayerStack.cpp">
-      <Filter>src\Tayo</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tayo\Log.cpp">
-      <Filter>src\Tayo</Filter>
-    </ClCompile>
     <ClCompile Include="src\Tayo\Renderer\Buffer.cpp">
       <Filter>src\Tayo\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Tayo\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Tayo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Tayo\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Tayo\Renderer\RenderCommand.cpp">
@@ -1484,5 +1491,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tayo\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

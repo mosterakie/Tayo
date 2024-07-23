@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tayo/Core.h"
+#include "Tayo/Core/Core.h"
 
 namespace Tayo {
 	class TAYO_API Input

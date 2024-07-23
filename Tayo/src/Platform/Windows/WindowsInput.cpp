@@ -1,7 +1,7 @@
 #include "typch.h"
 #include "WIndowsInput.h"
 
-#include "Tayo/Application.h"
+#include "Tayo/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Tayo {

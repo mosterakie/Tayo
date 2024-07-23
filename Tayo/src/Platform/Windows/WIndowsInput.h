@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tayo/Input.h"
+#include "Tayo/Core/Input.h"
 
 namespace Tayo {
 	class WindowsInput :public Input

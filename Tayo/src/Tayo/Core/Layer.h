@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core.h"
-#include "Events/Event.h"
+#include "Tayo/Events/Event.h"
 #include "Tayo/Core/Timestep.h"
 
 namespace Tayo {

@@ -11,11 +11,12 @@
 
 #include <string>
 #include <sstream>
+#include <array>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Tayo/Log.h"
+#include "Tayo/Core/Log.h"
 
 
 #ifdef TY_PLATFORM_WINDOWS

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tayo/Window.h"
+#include "Tayo/Core/Window.h"
 #include "Tayo/Renderer/GraphicsContext.h"
 
 #include "GLFW/glfw3.h"

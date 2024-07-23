@@ -2,7 +2,7 @@
 
 #include "typch.h"
 
-#include "Tayo/Core.h"
+#include "Tayo/Core/Core.h"
 #include "Tayo/Events/Event.h"
 //#include "Tayo/Events/Event.cpp"
 

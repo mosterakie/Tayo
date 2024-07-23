@@ -3,7 +3,7 @@
 #include "Core.h"
 #include "Window.h"
 #include "LayerStack.h"
-#include "Events/ApplicationEvent.h"
+#include "Tayo/Events/ApplicationEvent.h"
 
 #include "Tayo/ImGui/ImGuiLayer.h"
 
@@ -26,9 +26,12 @@ namespace Tayo {
 		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& event);
+		bool OnWindowResize(WindowResizeEvent& e);
+	private:
 		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
+		bool m_Minimized = false;
 
 		LayerStack m_LayerStack;
 
