@@ -20,7 +20,6 @@ namespace Tayo {
 	{
 		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
 		m_LayerInsertIndex++;
-		layer->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
@@ -37,7 +36,6 @@ namespace Tayo {
 	void LayerStack::PushOverLay(Layer* overlay)
 	{
 		m_Layers.emplace_back(overlay);
-		overlay->OnAttach();
 	}
 
 	void LayerStack::PopOverLay(Layer* overlay)

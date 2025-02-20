@@ -23,18 +23,22 @@ namespace Tayo {
 		return new WindowsWindow(props);
 	}
 
-	WindowsWindow::~WindowsWindow() 
-	{
-		Shutdown();
-	}
-
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		TY_PROFILE_FUNCTION();
 		Init(props);
+	}
+
+	WindowsWindow::~WindowsWindow() 
+	{
+		TY_PROFILE_FUNCTION();
+		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		TY_PROFILE_FUNCTION();
+
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
@@ -43,6 +47,7 @@ namespace Tayo {
 
 		if (!s_GLFWInitialized)
 		{
+			TY_PROFILE_SCOPE("glfwInit");
 			int success = glfwInit();
 
 			TY_CORE_ASSERT(success, "Could not init GLFW!");
@@ -50,11 +55,14 @@ namespace Tayo {
 			s_GLFWInitialized = true;
 		}
 
-		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		
-		m_Context = new OpenGLContext(m_Window);
+		{
+			TY_PROFILE_SCOPE("glfwCreateWindow");
+			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
-		m_Context->Init();
+			m_Context = new OpenGLContext(m_Window);
+
+			m_Context->Init();
+		}
 
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
@@ -128,11 +136,14 @@ namespace Tayo {
 
 	void WindowsWindow::Shutdown()
 	{
+		TY_PROFILE_FUNCTION();
 		glfwDestroyWindow(m_Window);
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
+		TY_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 
 		m_Context->SwapBuffers();
@@ -140,6 +151,8 @@ namespace Tayo {
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		TY_PROFILE_FUNCTION();
+
 		if (enabled)
 			glfwSwapInterval(1);
 		else

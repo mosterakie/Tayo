@@ -163,6 +163,7 @@
     <ClInclude Include="src\Tayo\Core\MouseCode.h" />
     <ClInclude Include="src\Tayo\Core\Timestep.h" />
     <ClInclude Include="src\Tayo\Core\Window.h" />
+    <ClInclude Include="src\Tayo\Debug\instrumentor.h" />
     <ClInclude Include="src\Tayo\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Tayo\Events\Event.h" />
     <ClInclude Include="src\Tayo\Events\KeyEvent.h" />

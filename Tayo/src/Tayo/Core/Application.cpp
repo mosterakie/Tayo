@@ -17,6 +17,8 @@ namespace Tayo {
 	Application::Application() 
 		
 	{
+		TY_PROFILE_FUNCTION();
+
 		TY_CORE_ASSERT(!s_Instance,"Application already exists!");
 		s_Instance = this;
 
@@ -30,12 +32,17 @@ namespace Tayo {
 
 	}
 
-	Application::~Application() {
+	Application::~Application() 
+	{
+		TY_PROFILE_FUNCTION();
 
+		Renderer::Shutdown();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		TY_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
@@ -52,30 +59,41 @@ namespace Tayo {
 
 	void Application::PushLayer(Layer* layer)
 	{
+		TY_PROFILE_FUNCTION();
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
+		TY_PROFILE_FUNCTION();
 		m_LayerStack.PushOverLay(overlay);
+		overlay->OnAttach();
 	}
 
 	void Application::Run() {
+		TY_PROFILE_FUNCTION();
+
 		while (m_Running)
 		{
+			TY_PROFILE_SCOPE("RunLoop");
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
 			if (!m_Minimized)
 			{
+				TY_PROFILE_SCOPE("LayerStack OnUpadate");
 				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
+			{
+				TY_PROFILE_SCOPE("LayerStack OnImGuiRender");
+				for (Layer* layer : m_LayerStack)
+					layer->OnImGuiRender();
+			}
 			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
@@ -90,6 +108,8 @@ namespace Tayo {
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		TY_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;

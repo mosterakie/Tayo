@@ -351,12 +351,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
   ${Tayo_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}/Sandbox/
 )
 
-add_executable(Sandbox.exe
+add_executable(Sandbox2D.exe
   # ${Tayo_SOURCE_DIR}/Sandbox/src/Panels/ContentBrowserPanel.cpp
   # ${Tayo_SOURCE_DIR}/Sandbox/src/Panels/SceneHierarchyPanel.cpp
   # ${Tayo_SOURCE_DIR}/Sandbox/src/EditorLayer.cpp
   # ${Tayo_SOURCE_DIR}/Sandbox/src/TayonutApp.cpp
-  ${Tayo_SOURCE_DIR}/Sandbox/src/SandboxApp.cpp
+  ${Tayo_SOURCE_DIR}/Sandbox/src/SandboxA2D.cpp
 )
 
 ########################################################################

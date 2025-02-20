@@ -6,12 +6,18 @@ extern Tayo::Application* Tayo::CreateApplication();
 
 int main(int argc,char** argv) {
 	Tayo::Log::Init();
-	TY_CORE_WARN("Initialized Log!");
-	int a = 5;
-	TY_INFO("It's Log! Var={0}",a);
+
+	TY_PROFILE_BEGIN_SESSION("Startup", "TayoProfile-Startup.json");
 	auto app = Tayo::CreateApplication();
+	TY_PROFILE_END_SESSION();
+
+	TY_PROFILE_BEGIN_SESSION("Runtime", "TayoProfile-Runtime.json");
 	app->Run();
+	TY_PROFILE_END_SESSION();
+
+	TY_PROFILE_BEGIN_SESSION("Shutdown", "TayoProfile-Shutdown.json");
 	delete app;
+	TY_PROFILE_END_SESSION();
 }
 
 #endif // TY_PLATFORM_WINDOWS

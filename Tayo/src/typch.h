@@ -18,6 +18,8 @@
 
 #include "Tayo/Core/Log.h"
 
+#include "Tayo/Debug/instrumentor.h"
+
 
 #ifdef TY_PLATFORM_WINDOWS
 	#include <Windows.h>

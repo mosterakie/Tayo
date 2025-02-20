@@ -12,6 +12,8 @@ namespace Tayo {
 	}
 	void Tayo::OpenGLContext::Init()
 	{
+		TY_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		TY_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -19,6 +21,8 @@ namespace Tayo {
 
 	void Tayo::OpenGLContext::SwapBuffers()
 	{
+		TY_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }

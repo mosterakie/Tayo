@@ -18,10 +18,17 @@ private:
 	Tayo::OrthographicCameraController m_CameraController;
 
 	// Temp
-	Tayo::Ref<Tayo::VertexArray> m_SquareVA;
-	Tayo::Ref<Tayo::Shader> m_FlatColorShader;
-
 	Tayo::Ref<Tayo::Texture2D> m_CheckerboardTexture;
+	Tayo::Ref<Tayo::Shader> m_TextureShader;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+	glm::vec2 QuadPosition = { 0.0f, 0.0f };
+	Tayo::Ref<Tayo::Texture2D> m_TayoTexture;
+	std::vector<Tayo::Ref<Tayo::Texture2D>> m_StaticObjectTextures;
+	std::vector<Tayo::Ref<Tayo::Texture2D>> m_Orc_IdleTextures;
+	int curr_Orc = 0;
+
+	std::vector< Tayo::Ref<Tayo::Texture2D>> m_GrassTextures;
+
+	std::vector<std::vector<int>> m_Map;
 };
