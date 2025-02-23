@@ -16,6 +16,7 @@ namespace Tayo {
 	{
 		TY_PROFILE_FUNCTION();
 
+#if 0
 		if (Input::IsKeyPressed(TY_KEY_A))
 			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
 		else if (Input::IsKeyPressed(TY_KEY_D))
@@ -37,7 +38,7 @@ namespace Tayo {
 		}
 
 		m_Camera.SetPosition(m_CameraPosition);
-
+#endif
 		m_CameraTranslationSpeed = m_ZoomLevel;
 	}
 
@@ -53,10 +54,11 @@ namespace Tayo {
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
 		TY_PROFILE_FUNCTION();
-
+#if 0
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+#endif
 		return false;
 	}
 
@@ -67,6 +69,17 @@ namespace Tayo {
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;
+	}
+
+	void OrthographicCameraController::SetCameraPosition(const glm::vec3& position)
+	{
+		m_CameraPosition = position; m_Camera.SetPosition(m_CameraPosition); 
+	}
+
+	void OrthographicCameraController::SetCameraZoomLevel(float zoomLevel)
+	{
+		m_ZoomLevel = std::max(zoomLevel, 0.25f);
+		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel); 
 	}
 
 }

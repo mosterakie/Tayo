@@ -180,6 +180,7 @@
     <ClInclude Include="src\Tayo\Renderer\Shader.h" />
     <ClInclude Include="src\Tayo\Renderer\Texture.h" />
     <ClInclude Include="src\Tayo\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Tayo\Tools\Sprite.h" />
     <ClInclude Include="src\typch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -624,6 +625,7 @@
     <ClCompile Include="src\Tayo\Renderer\Shader.cpp" />
     <ClCompile Include="src\Tayo\Renderer\Texture.cpp" />
     <ClCompile Include="src\Tayo\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Tayo\Tools\Sprite.cpp" />
     <ClCompile Include="src\typch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

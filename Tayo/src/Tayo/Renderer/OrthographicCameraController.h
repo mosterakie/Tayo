@@ -22,6 +22,8 @@ namespace Tayo {
 
 		float GetZoomLevel() const { return m_ZoomLevel; }
 		void SetZoomLevel(float level) { m_ZoomLevel = level; }
+		void SetCameraPosition(const glm::vec3& position);
+		void SetCameraZoomLevel(float zoomLevel);
 
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
